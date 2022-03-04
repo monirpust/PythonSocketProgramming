@@ -23,8 +23,9 @@ def handle_client(clientsocket, address):
             if msg == DISCONNECT_MESSAGE:
                 connected = False
             print(f"[{address}] {msg}")
+            clientsocket.send("Hey, We recieved your message!".encode(FORMAT))
 
-    clientsocket.close()
+    # clientsocket.close()
 
 
 def start():
