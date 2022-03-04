@@ -1,5 +1,6 @@
 import socket
 import threading
+from middleware import Middleware
 
 PORT = 5050
 HEADER = 64
