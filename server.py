@@ -17,12 +17,12 @@ def handle_client(clientsocket, address):
     connected = True
     while connected:
         msg_length = clientsocket.recv(HEADER).decode(FORMAT)
-        msg_length = int(msg_length)
-        msg = clientsocket.recv(msg_length).decode(FORMAT)
-        if msg == DISCONNECT_MESSAGE:
-            connected = False
-
-        print(f"[{address}] {msg}")
+        if msg_length:
+            msg_length = int(msg_length)
+            msg = clientsocket.recv(msg_length).decode(FORMAT)
+            if msg == DISCONNECT_MESSAGE:
+                connected = False
+            print(f"[{address}] {msg}")
 
     clientsocket.close()
 
